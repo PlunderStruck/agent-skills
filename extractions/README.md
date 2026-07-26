@@ -32,6 +32,8 @@ The fix for "don't lose the detail" isn't bigger skills. It's this layer plus a 
 | [`concurrency-and-durability`](concurrency-and-durability.md) | OSTEP — Arpaci-Dusseau | `concurrency`, `durability` |
 | [`complex-systems-failure`](complex-systems-failure.md) | How Complex Systems Fail — Cook | `incident-review` |
 | [`decomposition`](decomposition.md) | Thinking Forth — Brodie | `decomposition` |
+| [`types-as-contracts`](types-as-contracts.md) | Designing with Types — Wlaschin | `design-by-contract`, `data-modeling` |
+| [`transaction-processing`](transaction-processing.md) | Principles of Transaction Processing — Bernstein & Newcomer | `distributed-data` |
 | [`interface-depth`](interface-depth.md) | A Philosophy of Software Design — Ousterhout | `decomposition` |
 | [`design-by-contract`](design-by-contract.md) | Object-Oriented Software Construction — Meyer | `design-by-contract` |
 | [`data-modeling`](data-modeling.md) | Data and Reality — Kent | `data-modeling` |

@@ -34,6 +34,7 @@ Any of these in the code you are writing or reviewing:
 | Timestamps, TTLs, leases, distributed locks | Silent write loss, split-brain | [clocks-leases-fencing](references/clocks-leases-fencing.md) |
 | Shard keys, secondary indexes, pagination | Hot partition, scatter/gather | [partitioning-and-hotspots](references/partitioning-and-hotspots.md) |
 | Stream/queue consumers, windowed aggregation | Replay, event-time skew | [streams-and-queues](references/streams-and-queues.md) |
+| Multi-step operations spanning transactions; orchestrators | Missing compensation, invisible in-flight state | [sagas-and-compensation](references/sagas-and-compensation.md) |
 
 ## Rules that apply without loading anything
 

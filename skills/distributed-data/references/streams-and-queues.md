@@ -12,6 +12,20 @@ So: **deduplication is the consumer's job.** See [idempotency-and-retries](idemp
 
 Effectively-once is achievable, but through idempotence and fencing, not by trusting a config flag.
 
+## A job queue on a plain table
+
+Multiple workers polling `WHERE status = 'pending' ORDER BY id LIMIT 1` is the common way to avoid standing up a broker, and the naive version fails two ways: claim logic that serialises every worker behind whoever holds the lock on the next row — defeating the point of having workers — or a `SELECT` followed by a separate `UPDATE`, which races two workers onto one row.
+
+**Use an atomic locking read that skips already-claimed rows**: `SELECT ... FOR UPDATE SKIP LOCKED` (Postgres, MySQL 8+) or `READPAST` (SQL Server), in a single statement that selects and marks claimed. No lock table, no backoff-and-retry polling loop.
+
+## Poison messages need a bound
+
+A consumer that throws on bad data *in the message itself* — not a transient fault — aborts, returns the message to the queue, and gets it redelivered forever.
+
+Unbounded, one malformed message burns consumer capacity indefinitely, and it is invisible: nothing marks it as permanently stuck, so nobody looks until throughput visibly degrades.
+
+**Configure a maximum delivery count** after which the message moves to a dead-letter queue, with a minimum interval between retries so a transient blip isn't misread as poison. Then give the dead-letter queue a defined owner and a handling path — parked-and-forgotten is the same outcome as dropped, with extra steps.
+
 ## Ordering
 
 Order is preserved **within a partition**, not across partitions and not across topics. Two consequences:

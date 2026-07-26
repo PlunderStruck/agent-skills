@@ -13,6 +13,12 @@ The failures that follow are recognisable: two teams reading the same column dif
 
 This skill is about surfacing those decisions while they're still cheap.
 
+## An awkward shape is a missing concept
+
+The same surfacing habit applies one layer up, in code. When a type grows its Nth optional field or its Nth variant and each one "shouldn't be necessary," that is a signal a concept is missing from the domain vocabulary — not a modelling problem to push through by adding another field.
+
+Stop and ask what single entity would make the awkwardness disappear, and take the resulting question back to whoever owns the business rule. *Does "primary contact method" mean anything, and can two be equally primary?* is a requirements question the type shape surfaced, not an implementation detail to settle alone.
+
 ## Rules that apply without loading anything
 
 **1. Separate identity from name.** A primary key must not be something that can legitimately change while the thing stays the same thing. Use an opaque surrogate; treat codes, emails, and names as ordinary mutable attributes. Otherwise a rename cascades through every referencing table — or gets faked as a delete-and-reinsert, which silently severs history.

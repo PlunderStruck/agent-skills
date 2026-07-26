@@ -68,6 +68,16 @@ If step 2's processor crashes and resumes from a checkpoint, it re-emits the sam
 
 Validation that must reject a request — "this would overdraw the account" — goes in a processor partitioned by the account, before the request enters the log.
 
+## Never hold a lock across user think-time
+
+An interactive flow that shows available seats or remaining stock and writes only after the user decides, with real minutes in between.
+
+As one transaction, the lock is held for as long as the user deliberates and every other request for that row queues behind them. As two uncoordinated transactions, the value goes stale and you overbook.
+
+**Split into two transactions and add an explicit tentative hold** — its own row or flag, with its own expiry, reclaimed by a cleanup job if the user never confirms. Not a database lock spanning the gap. This is what "your seat is held for 10 minutes" actually is.
+
+**Check.** No transaction should span a network round trip to a client. Any hold concept needs an expiry and a reclaim path, not just a creation path.
+
 ## Timeliness vs integrity
 
 Worth separating, because they have different urgency:

@@ -117,6 +117,7 @@ In all three, attempt the operation and check the *outcome* instead of gating on
 | Topic | File |
 |---|---|
 | Overriding a method, implementing an interface, writing an error path | [inheritance-and-errors](references/inheritance-and-errors.md) |
+| Enforcing a contract in the type system rather than by convention | [types-as-contracts](references/types-as-contracts.md) |
 
 ## Boundary with neighbouring skills
 

@@ -62,6 +62,8 @@ The material was distilled from these books. The text here is original — opera
 - **A Philosophy of Software Design** — John Ousterhout → the interface-depth material in `decomposition`
 - **Data and Reality** — William Kent → `data-modeling`
 - **Debugging: The 9 Indispensable Rules** — David Agans → `debugging`
+- **Designing with Types** — Scott Wlaschin (free at [fsharpforfunandprofit.com](https://fsharpforfunandprofit.com/series/designing-with-types/)) → `design-by-contract`, `data-modeling`
+- **Principles of Transaction Processing** — Bernstein & Newcomer → `distributed-data`
 
 If a skill here is useful to you, the book it came from will be more so. Buy them.
 

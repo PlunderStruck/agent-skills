@@ -12,6 +12,12 @@ Production data eventually contains a case the enum doesn't cover, and different
 
 **Check.** Could two legitimate stakeholders disagree about whether a record belongs in this category? If so, whose definition does the field currently encode, and where does the other one live?
 
+### The code-level counterpart
+
+The same decision recurs in the type system, and there it can be enforced rather than documented. A status field beside fields only meaningful for some of its values is the schema version of what `design-by-contract`'s [types-as-contracts](../../design-by-contract/references/types-as-contracts.md) calls representing each state as its own type — give each state a shape carrying only its own fields, so a function that only makes sense in one state cannot be handed another.
+
+Worth deciding both at once: if the schema keeps a nullable column per status, the code will keep a null check per reader.
+
 ## Mutual exclusivity is a default, not a requirement
 
 **Trigger.** Single-table inheritance, or a mandatory single-valued `type` discriminator, for something that could belong to several categories at once — a person who is simultaneously employee, customer, and stockholder.

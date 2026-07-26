@@ -82,6 +82,26 @@ Fixes:
 
 Note that `SELECT ... FOR UPDATE` **cannot** fix the cases that check for the *absence* of rows. There is nothing to lock. This is the phantom problem, and it's why the booking and username cases are harder than the on-call case.
 
+## Deadlocks are a retryable outcome, not a bug to eliminate
+
+**Lock-conversion deadlock** is the guaranteed result whenever two concurrent transactions read a row and then upgrade to a write on it. Both take a shared lock, both ask to upgrade, neither can — because the other's read lock is in the way. This is not an edge case; it is what *always* happens when two transactions do read-then-maybe-write on the same row.
+
+**Take the stronger lock up front** if you know you might write: `SELECT ... FOR UPDATE`, or a dedicated update-lock mode where the engine has one (SQL Server's `UPDLOCK` conflicts with writers but not plain readers, so it converts without the conversion risk).
+
+**Treat "you were the deadlock victim" as its own retryable condition.** Catch the specific error code, not a generic exception. Back off with jitter and cap the attempts. If retries keep hitting the same pair, the fix is lock *ordering* — always acquire shared resources in the same order across every code path — not a higher retry limit.
+
+Know which detection your engine uses: a timeout, which occasionally aborts an innocent transaction, or a wait-for graph, which only aborts real cycles at the cost of bookkeeping. Teams that don't know either over-trust "no deadlock detected" or panic at false positives.
+
+## Composed transaction boundaries
+
+A transactional method calling another transactional method resolves silently, and differently per framework.
+
+**Requires-new** starts an independent transaction. If it commits and the *outer* one later aborts, the inner work is permanent — breaking the atomicity the caller assumed. **Required**, the usual default, folds the inner call into the caller's: an inner rollback-only can abort far more than its author intended, and an inner commit does nothing, which surprises anyone who tested that method standalone and watched it "work."
+
+**Treat the propagation mode as part of the method's contract** and document it like a precondition. Reserve requires-new for work whose durability must genuinely survive the caller's failure — an audit or security-log entry. Use a savepoint for "undo part of what I did": widely supported, almost never used, and usually cheaper than the manual workaround people build instead.
+
+**Check.** For every nested transactional call, state what happens to the inner work if the outer call throws after it returned. If that takes more than one sentence, the composition is undocumented.
+
 ## Choosing serializable
 
 Three implementations, different failure characteristics:

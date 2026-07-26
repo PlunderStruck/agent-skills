@@ -37,6 +37,22 @@ Mitigation is manual and has real costs: append a random suffix to spread one ke
 
 No mainstream data system does this automatically. If your design has a naturally hot key, decide deliberately whether to split it, cache in front of it, or make the operation commutative so it can be aggregated.
 
+## Single-row hot spots, where partitioning has nothing left to split
+
+Distinct from a hot *shard key*. A single row every transaction must touch — a running balance, a sequence number, a global inventory count — is already the finest granularity, so re-sharding does not apply. Throughput caps at roughly one transaction per average lock-hold-time on that row, no matter how many cores or connections you add.
+
+Teams hit that ceiling, read it as a scaling problem, and reach for partitioning tools that cannot help.
+
+In order of preference:
+
+1. **Single atomic statement** — `UPDATE t SET n = n + 1` — so the lock is held for the statement, not the surrounding transaction.
+2. **Touch the hot row last**, immediately before commit, minimising hold time. Sometimes means restructuring the method to defer the write.
+3. **Optimistic check** where the exact value need not be locked — act without locking, re-check the condition at commit, abort if it moved. Trades a rare late abort for not holding the lock across the transaction's life.
+4. **Batch per worker** and flush periodically, where the precise moment of update does not matter.
+5. **Split hot and cold columns** into separate rows so readers of the cold ones aren't queued behind writers of the hot ones.
+
+**Check.** For any row identified by lock-wait telemetry as a ceiling, confirm which of these is in use — or that accepting the ceiling was a decision someone actually made.
+
 ## Secondary indexes
 
 Two designs, opposite trade-offs. Know which one your store uses.
