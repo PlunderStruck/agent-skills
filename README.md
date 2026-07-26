@@ -19,6 +19,7 @@ Each one is a catalogue of **failure modes bound to code shapes** — not a summ
 | [`security`](skills/security) | Untrusted input, auth, crypto, secrets, admin paths | Escaping instead of parameterizing, encoding for the wrong context, authorization assumed from authentication, secrets that were deleted but not rotated |
 | [`concurrency`](skills/concurrency) | Anything two threads touch | Atomicity and order violations, `if` instead of `while` on a condition variable, argument-position lock ordering, ordering bugs that only appear off x86 |
 | [`durability`](skills/durability) | File writes that must survive a crash | Treating `write()` as persisted, the missing directory fsync, rename before the data is flushed, torn writes |
+| [`incident-review`](skills/incident-review) | Postmortems, outage analysis, judging a decision after the fact | Single-root-cause writeups, hindsight bias, grading the outcome instead of the decision, remedies that add more coupling than they remove |
 
 Each is a short router `SKILL.md` plus reference files loaded on demand, so the depth doesn't cost context until it's needed.
 
@@ -49,6 +50,7 @@ The material was distilled from these books. The text here is original — opera
 - **OWASP Cheat Sheet Series** — OWASP (CC-licensed, [cheatsheetseries.owasp.org](https://cheatsheetseries.owasp.org/)) → `security` (code)
 - **Rust Atomics and Locks** — Mara Bos (free at [marabos.nl/atomics](https://marabos.nl/atomics/)) → `concurrency`
 - **Operating Systems: Three Easy Pieces** — Arpaci-Dusseau (free at [pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)) → `concurrency`, `durability`
+- **How Complex Systems Fail** — Richard I. Cook (free at [how.complexsystems.fail](https://how.complexsystems.fail/)) → `incident-review`, plus extensions to `resilience` and `slo-and-alerting`
 
 If a skill here is useful to you, the book it came from will be more so. Buy them.
 

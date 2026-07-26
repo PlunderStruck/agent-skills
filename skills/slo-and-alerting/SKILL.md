@@ -47,6 +47,18 @@ For any user-facing service, instrument at minimum:
 
 **Track latency as a distribution, never a mean.** A 100 ms average happily coexists with a tail where 1% of requests take five seconds. Use histogram buckets with roughly exponential boundaries, and treat a high percentile over a short window as an early saturation signal — the tail moves before the average does.
 
+## Two states is not enough
+
+Most monitoring encodes exactly two conditions: working and broken. That misses where systems actually spend their time.
+
+**Name the degraded band explicitly.** A complex system's resting state is *functioning with a shifting population of individually-survivable defects* — not a clean baseline that occasionally deviates. If your only categories are up and down, early degradation gets normalised ("it's always a bit like that") until it compounds into something a postmortem later calls obvious in hindsight.
+
+Give the degraded-but-tolerable band its own name, its own threshold, and — importantly — its own **accepted duration**. A system in that band for an hour and one that has been there for three weeks are different situations, and only the second is a decision waiting to be made.
+
+**Keep a census of known-but-unfixed weaknesses.** The count of closed incidents measures what already hurt you. The population of tolerated defects is a leading indicator of the next conjunction, and it's usually tracked nowhere — scattered across issue backlogs, comments, and people's heads. Making it a single visible artifact is cheap and turns "we're fine" into a claim someone has to look at.
+
+Neither of these is an alerting rule. They're dashboards and reviews — which is exactly why they get skipped.
+
 ## What deserves a page
 
 Run every proposed paging rule through this gate. Any "no" means it shouldn't page:

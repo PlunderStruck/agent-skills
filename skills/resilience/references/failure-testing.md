@@ -59,6 +59,16 @@ Beyond single-call behavior, the containment properties need testing too:
 - **Traffic without cookies.** Generate requests that never send a session identifier and hammer a single URL. Realistic click-path load scripts will not do this, and commercial load-test tooling will not generate it by default — but bots do it constantly.
 - **Fan-out at real instance counts.** Architectures with point-to-point communication or a shared coordinator behave completely differently at fifty nodes than at two. Testing at development scale proves nothing about production scale.
 
+## What failure testing is also for
+
+Two things this practice buys that are easy to miss, because neither shows up as a passing test.
+
+**It calibrates people, not just systems.** An environment sanitised so thoroughly that engineers rarely see anything genuinely break produces operators who can follow a runbook and have no felt sense of how close the system runs to its edge — so their first real incident is also their first real judgement call. Gamedays and fault injection build that judgement before it's needed. Treat exposure to controlled failure as ongoing operating cost rather than onboarding.
+
+**Every fix opens a new observation window.** Machinery adopted specifically to eliminate a known failure mode introduces different ones — typically rarer, larger, and slower to surface, because they need volume and time to appear. Risk gets declared reduced at cutover, which is exactly when the new failure surface is least understood. Hold heightened scrutiny for a defined period after any migration that "eliminates" a failure class, rather than closing the book when the old symptom stops.
+
+Related, and worth weighing before you add another layer: **each protective mechanism is itself a component that can fail, be bypassed, or interact badly with something else.** A breaker, a bulkhead, an approval gate — each removes some risk and adds some coupling. That trade is usually worth it; it is not automatically worth it, and a system defended by a dozen interacting mechanisms has its own emergent behaviour to reason about.
+
 ## What to check in the code
 
 - Is there a hostile double per dependency type, or only in-contract mocks?
