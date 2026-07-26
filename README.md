@@ -16,6 +16,9 @@ Each one is a catalogue of **failure modes bound to code shapes** — not a summ
 | [`network-performance`](skills/network-performance) | HTTP clients and servers, page load, realtime transports, mobile clients | Optimizing bytes when round trips are the bottleneck, HTTP/1.1 workarounds kept after migrating, radio-expensive polling |
 | [`slo-and-alerting`](skills/slo-and-alerting) | Monitoring, alerting rules, reliability targets | Alerting on causes instead of symptoms, mean latency hiding the tail, targets too vague to decide anything |
 | [`sql-performance`](skills/sql-performance) | Queries, indexes, schemas, pagination | Wrong composite index order, functions defeating an index, implicit casts, catch-all optional filters, OFFSET pagination |
+| [`security`](skills/security) | Untrusted input, auth, crypto, secrets, admin paths | Escaping instead of parameterizing, encoding for the wrong context, authorization assumed from authentication, secrets that were deleted but not rotated |
+| [`concurrency`](skills/concurrency) | Anything two threads touch | Atomicity and order violations, `if` instead of `while` on a condition variable, argument-position lock ordering, ordering bugs that only appear off x86 |
+| [`durability`](skills/durability) | File writes that must survive a crash | Treating `write()` as persisted, the missing directory fsync, rename before the data is flushed, torn writes |
 
 Each is a short router `SKILL.md` plus reference files loaded on demand, so the depth doesn't cost context until it's needed.
 
@@ -42,6 +45,10 @@ The material was distilled from these books. The text here is original — opera
 - **Site Reliability Engineering** — Google (free at [sre.google/books](https://sre.google/books/)) → `slo-and-alerting`, and the overload/cascade material in `resilience`
 - **High Performance Browser Networking** — Ilya Grigorik (free at [hpbn.co](https://hpbn.co/)) → `network-performance`
 - **SQL Performance Explained** — Markus Winand (free at [use-the-index-luke.com](https://use-the-index-luke.com/)) → `sql-performance`
+- **Building Secure and Reliable Systems** — Google (free at [sre.google/books](https://sre.google/books/)) → `security` (design)
+- **OWASP Cheat Sheet Series** — OWASP (CC-licensed, [cheatsheetseries.owasp.org](https://cheatsheetseries.owasp.org/)) → `security` (code)
+- **Rust Atomics and Locks** — Mara Bos (free at [marabos.nl/atomics](https://marabos.nl/atomics/)) → `concurrency`
+- **Operating Systems: Three Easy Pieces** — Arpaci-Dusseau (free at [pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)) → `concurrency`, `durability`
 
 If a skill here is useful to you, the book it came from will be more so. Buy them.
 
