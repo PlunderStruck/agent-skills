@@ -15,6 +15,7 @@ Each one is a catalogue of **failure modes bound to code shapes** — not a summ
 | [`legacy-code`](skills/legacy-code) | Changes to code that has no tests and won't go in a harness | The rewrite reflex, changing behavior before pinning it, editing without a net |
 | [`network-performance`](skills/network-performance) | HTTP clients and servers, page load, realtime transports, mobile clients | Optimizing bytes when round trips are the bottleneck, HTTP/1.1 workarounds kept after migrating, radio-expensive polling |
 | [`slo-and-alerting`](skills/slo-and-alerting) | Monitoring, alerting rules, reliability targets | Alerting on causes instead of symptoms, mean latency hiding the tail, targets too vague to decide anything |
+| [`sql-performance`](skills/sql-performance) | Queries, indexes, schemas, pagination | Wrong composite index order, functions defeating an index, implicit casts, catch-all optional filters, OFFSET pagination |
 
 Each is a short router `SKILL.md` plus reference files loaded on demand, so the depth doesn't cost context until it's needed.
 
@@ -40,6 +41,7 @@ The material was distilled from these books. The text here is original — opera
 - **Working Effectively with Legacy Code** — Michael Feathers → `legacy-code`
 - **Site Reliability Engineering** — Google (free at [sre.google/books](https://sre.google/books/)) → `slo-and-alerting`, and the overload/cascade material in `resilience`
 - **High Performance Browser Networking** — Ilya Grigorik (free at [hpbn.co](https://hpbn.co/)) → `network-performance`
+- **SQL Performance Explained** — Markus Winand (free at [use-the-index-luke.com](https://use-the-index-luke.com/)) → `sql-performance`
 
 If a skill here is useful to you, the book it came from will be more so. Buy them.
 
