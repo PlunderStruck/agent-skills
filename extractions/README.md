@@ -32,6 +32,10 @@ The fix for "don't lose the detail" isn't bigger skills. It's this layer plus a 
 | [`concurrency-and-durability`](concurrency-and-durability.md) | OSTEP — Arpaci-Dusseau | `concurrency`, `durability` |
 | [`complex-systems-failure`](complex-systems-failure.md) | How Complex Systems Fail — Cook | `incident-review` |
 | [`decomposition`](decomposition.md) | Thinking Forth — Brodie | `decomposition` |
+| [`interface-depth`](interface-depth.md) | A Philosophy of Software Design — Ousterhout | `decomposition` |
+| [`design-by-contract`](design-by-contract.md) | Object-Oriented Software Construction — Meyer | `design-by-contract` |
+| [`data-modeling`](data-modeling.md) | Data and Reality — Kent | `data-modeling` |
+| [`debugging`](debugging.md) | Debugging: The 9 Indispensable Rules — Agans | `debugging` |
 
 **Not present:** `distributed-data` and `api-evolution` were extracted from *Designing Data-Intensive Applications* by reading the text directly rather than via a sub-agent, so there's no separate intermediate file — those two skills are themselves the extraction, and are correspondingly more detailed than the others.
 

@@ -20,6 +20,9 @@ Each one is a catalogue of **failure modes bound to code shapes** — not a summ
 | [`concurrency`](skills/concurrency) | Anything two threads touch | Atomicity and order violations, `if` instead of `while` on a condition variable, argument-position lock ordering, ordering bugs that only appear off x86 |
 | [`durability`](skills/durability) | File writes that must survive a crash | Treating `write()` as persisted, the missing directory fsync, rename before the data is flushed, torn writes |
 | [`decomposition`](skills/decomposition) | Splitting something up, extracting a function or module, designing structure | Boundaries drawn on execution order, premature generality, abstractions that enumerate combinations instead of composing them, names that reveal a wrong seam |
+| [`design-by-contract`](skills/design-by-contract) | Public methods, interfaces, overrides, error paths | Defensive re-checking of your own preconditions, overrides that quietly demand more than the base, handlers that return as if they succeeded |
+| [`data-modeling`](skills/data-modeling) | Schemas, keys, enums, versioning, integrating two systems | Natural keys that change, rows whose "one thing" is ambiguous, relationship metadata smeared onto an endpoint, categories with no slot for the record that arrived |
+| [`debugging`](skills/debugging) | Anything broken, especially if a first fix didn't hold | Theorising instead of observing, changing three things at once, declaring victory on one clean rerun |
 | [`incident-review`](skills/incident-review) | Postmortems, outage analysis, judging a decision after the fact | Single-root-cause writeups, hindsight bias, grading the outcome instead of the decision, remedies that add more coupling than they remove |
 
 Each is a short router `SKILL.md` plus reference files loaded on demand, so the depth doesn't cost context until it's needed.
@@ -53,6 +56,10 @@ The material was distilled from these books. The text here is original — opera
 - **Operating Systems: Three Easy Pieces** — Arpaci-Dusseau (free at [pages.cs.wisc.edu/~remzi/OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)) → `concurrency`, `durability`
 - **How Complex Systems Fail** — Richard I. Cook (free at [how.complexsystems.fail](https://how.complexsystems.fail/)) → `incident-review`, plus extensions to `resilience` and `slo-and-alerting`
 - **Thinking Forth** — Leo Brodie (CC-licensed, free at [thinking-forth.sourceforge.net](https://thinking-forth.sourceforge.net/)) → `decomposition`
+- **Object-Oriented Software Construction** — Bertrand Meyer → `design-by-contract`
+- **A Philosophy of Software Design** — John Ousterhout → the interface-depth material in `decomposition`
+- **Data and Reality** — William Kent → `data-modeling`
+- **Debugging: The 9 Indispensable Rules** — David Agans → `debugging`
 
 If a skill here is useful to you, the book it came from will be more so. Buy them.
 

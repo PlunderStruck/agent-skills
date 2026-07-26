@@ -45,7 +45,11 @@ A decomposition that has only been looked at has not been tested.
 
 **7. A good name doesn't prove the boundary is sound — check the calling protocol too.** If every call site must invoke things in a required order, the internal decision leaks through the convention even though the names look clean.
 
-**8. Defer the restructuring you know is coming.** Noticing that two concerns are tangled, and choosing not to split them yet, is often correct — the right shape isn't knowable until more of the system exists. Prepare by naming things honestly, not by pre-building the hooks and generic layers the future change might need.
+**8. Design it twice before committing.** Sketch two or three genuinely different alternatives — not variations on one idea — and list concrete pros and cons. A first idea is rarely challenged because nothing exists to contrast it against, so its weaknesses surface mid-implementation instead of on paper. If none of them is attractive, the shared weakness usually points at the design that's actually missing. Hours against days.
+
+**9. Treat design quality as a running expense.** Roughly a tenth to a fifth of time on work that doesn't ship today's feature — picking a cleaner shape before typing it, fixing a design problem when noticed rather than filing it. Each shortcut is locally cheap; the accumulation is what costs, which is why the damage stays invisible until cleanup is a multi-month ask nobody approves. For any shortcut taken under pressure, ask whether there's a concrete point at which it gets paid back. "Never, we'll live with it" is the answer to worry about.
+
+**10. Defer the restructuring you know is coming.** Noticing that two concerns are tangled, and choosing not to split them yet, is often correct — the right shape isn't knowable until more of the system exists. Prepare by naming things honestly, not by pre-building the hooks and generic layers the future change might need.
 
 ## Triage
 
@@ -55,6 +59,7 @@ A decomposition that has only been looked at has not been tested.
 | Suspecting a chunk is doing two things; conditionals as a design signal | [when-to-split](references/when-to-split.md) |
 | About to generalise, configure, or add a layer | [when-not-to-split](references/when-not-to-split.md) |
 | Naming an extracted piece; deciding where state lives | [naming-and-state](references/naming-and-state.md) |
+| Judging whether a boundary is deep enough; pass-through layers; interface comments | [interface-depth](references/interface-depth.md) |
 
 ## Working iteratively
 
