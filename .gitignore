@@ -1,1 +1,6 @@
 .DS_Store
+
+# Source texts: working copies for re-extraction, never redistributed.
+# The manifest in sources/README.md records provenance instead.
+sources/*
+!sources/README.md
