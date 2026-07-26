@@ -12,6 +12,7 @@ Each one is a catalogue of **failure modes bound to code shapes** — not a summ
 | [`resilience`](skills/resilience) | HTTP/RPC clients, pools, retries, health checks, startup and shutdown | Missing timeouts, cascading failure, pool exhaustion, unbounded queries, capacity cliffs, unoperable services |
 | [`api-evolution`](skills/api-evolution) | API shapes, event payloads, DB columns, RPC signatures | Breaking changes that pass tests because old and new code never run together locally |
 | [`unit-testing`](skills/unit-testing) | Tests, or reviewing someone else's | Over-mocking, tests coupled to implementation details, tests that can't disagree with the code |
+| [`legacy-code`](skills/legacy-code) | Changes to code that has no tests and won't go in a harness | The rewrite reflex, changing behavior before pinning it, editing without a net |
 
 Each is a short router `SKILL.md` plus reference files loaded on demand, so the depth doesn't cost context until it's needed.
 
@@ -34,6 +35,7 @@ The material was distilled from these books. The text here is original — opera
 - **Designing Data-Intensive Applications** — Martin Kleppmann → `distributed-data`, `api-evolution`
 - **Release It!** — Michael Nygard → `resilience`
 - **Unit Testing: Principles, Practices, and Patterns** — Vladimir Khorikov → `unit-testing`
+- **Working Effectively with Legacy Code** — Michael Feathers → `legacy-code`
 
 If a skill here is useful to you, the book it came from will be more so. Buy them.
 
