@@ -27,6 +27,8 @@ Each one is a catalogue of **failure modes bound to code shapes** — not a summ
 
 Each is a short router `SKILL.md` plus reference files loaded on demand, so the depth doesn't cost context until it's needed.
 
+**[`engineering-lenses`](skills/engineering-lenses)** indexes all sixteen — route by what you're writing, by what went wrong, or use it as an audit order. If you install one thing, install that.
+
 ## Design principles
 
 These were extracted deliberately, against a few rules:
