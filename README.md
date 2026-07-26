@@ -13,6 +13,8 @@ Each one is a catalogue of **failure modes bound to code shapes** — not a summ
 | [`api-evolution`](skills/api-evolution) | API shapes, event payloads, DB columns, RPC signatures | Breaking changes that pass tests because old and new code never run together locally |
 | [`unit-testing`](skills/unit-testing) | Tests, or reviewing someone else's | Over-mocking, tests coupled to implementation details, tests that can't disagree with the code |
 | [`legacy-code`](skills/legacy-code) | Changes to code that has no tests and won't go in a harness | The rewrite reflex, changing behavior before pinning it, editing without a net |
+| [`network-performance`](skills/network-performance) | HTTP clients and servers, page load, realtime transports, mobile clients | Optimizing bytes when round trips are the bottleneck, HTTP/1.1 workarounds kept after migrating, radio-expensive polling |
+| [`slo-and-alerting`](skills/slo-and-alerting) | Monitoring, alerting rules, reliability targets | Alerting on causes instead of symptoms, mean latency hiding the tail, targets too vague to decide anything |
 
 Each is a short router `SKILL.md` plus reference files loaded on demand, so the depth doesn't cost context until it's needed.
 
@@ -36,6 +38,8 @@ The material was distilled from these books. The text here is original — opera
 - **Release It!** — Michael Nygard → `resilience`
 - **Unit Testing: Principles, Practices, and Patterns** — Vladimir Khorikov → `unit-testing`
 - **Working Effectively with Legacy Code** — Michael Feathers → `legacy-code`
+- **Site Reliability Engineering** — Google (free at [sre.google/books](https://sre.google/books/)) → `slo-and-alerting`, and the overload/cascade material in `resilience`
+- **High Performance Browser Networking** — Ilya Grigorik (free at [hpbn.co](https://hpbn.co/)) → `network-performance`
 
 If a skill here is useful to you, the book it came from will be more so. Buy them.
 

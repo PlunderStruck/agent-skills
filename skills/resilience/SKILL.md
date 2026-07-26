@@ -51,12 +51,19 @@ The entry point to that chain is a single missing timeout. That is why the rules
 
 **8. Isolate blast radius with bulkheads.** Separate pools per critical caller, tenant, or feature, so one consumer's overload cannot starve the others sharing a resource.
 
+**9. "Fail fast" does not mean go dark.** An overloaded service should keep serving up to its actual capacity and reject only the excess. Refusing everything past a threshold throws away capacity you still have.
+
+**10. Do not restart during an active cascade.** A restarted process starts cold and needs *more* resources to reach steady state than a warm one — exactly what is unavailable. Restarting a crash-looping fleet extends the outage. Recovery means shedding load far below the level that triggered the cascade, then ramping back as caches rewarm.
+
+**11. Pass a decrementing deadline, not a fresh timeout per hop.** A fixed timeout at every layer lets deep calls keep working on a request the original caller abandoned. Propagate the remaining budget, and propagate cancellation.
+
 ## Triage
 
 | What you're writing | Failure to check | Reference |
 |---|---|---|
 | HTTP/RPC client, DB call, any remote call | Hang, pool exhaustion, cascade | [blocking-calls-and-breakers](references/blocking-calls-and-breakers.md) |
 | Shared pools, multi-tenant paths, fleet-wide behavior | One failure taking everything | [blast-radius](references/blast-radius.md) |
+| Load shedding, retry budgets, load balancing, scheduled jobs | Self-sustaining cascade, retry amplification | [overload-and-cascades](references/overload-and-cascades.md) |
 | Queries, caches, sessions, logs, background accumulation | Unbounded growth, capacity cliffs | [unbounded-growth](references/unbounded-growth.md) |
 | Integration tests against a dependency | Passing tests, production hangs | [failure-testing](references/failure-testing.md) |
 | Startup, shutdown, config, logging, metrics | Unoperable under incident | [operability](references/operability.md) |
