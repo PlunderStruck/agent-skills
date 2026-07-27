@@ -1,11 +1,11 @@
 ---
 name: engineering-lenses
-description: Index of engineering failure-mode skills — routes to the right one for data correctness, resilience, security, concurrency, durability, SQL and network performance, testing, legacy code, decomposition, contracts, data modelling, debugging, incidents, API compatibility, alerting, and interaction/user error. Use when unsure which discipline applies, when auditing a codebase from multiple angles, or as a checklist before shipping something non-trivial.
+description: Index of engineering failure-mode skills — routes to the right one for data correctness, resilience, security, concurrency, durability, SQL and network performance, testing, legacy code, decomposition, contracts, data modelling, debugging, incidents, API compatibility, alerting, interaction/user error, and autonomous agent design. Use when unsure which discipline applies, when auditing a codebase from multiple angles, or as a checklist before shipping something non-trivial.
 ---
 
 # Engineering Lenses
 
-Seventeen skills, each a catalogue of failure modes bound to code shapes. This routes to the right one.
+Eighteen skills, each a catalogue of failure modes bound to code shapes. This routes to the right one.
 
 Each entry below is its own router over reference files, so loading one costs a page, not a book. Read only what the task needs.
 
@@ -28,6 +28,7 @@ Each entry below is its own router over reference files, so loading one costs a 
 | Splitting something up; extracting a module; designing structure | `decomposition` |
 | Monitoring, alerting rules, reliability targets | `slo-and-alerting` |
 | A destructive action, a mode or toggle, a confirm/undo path, an error message | `interaction-and-error` |
+| A tool-calling loop, an eval or scorer, an approval gate, an autonomous workflow | `agent-design` |
 
 ## Route by what went wrong
 
@@ -44,6 +45,7 @@ Each entry below is its own router over reference files, so loading one costs a 
 | The same bug keeps coming back in different forms | `debugging` first, then `incident-review` for the pattern |
 | Nobody can change one thing without touching six files | `decomposition` |
 | Users keep destroying things "by accident", or tickets keep closing as user error | `interaction-and-error` |
+| An agent loops, repeats itself, games its eval, or nobody can actually review its output | `agent-design` |
 
 ## Auditing a codebase
 
@@ -69,6 +71,7 @@ Knowing which of two adjacent skills owns a question:
 - **`unit-testing`** vs **`legacy-code`** — what a test should assert vs how to make untestable code testable at all.
 - **`sql-performance`** vs **`data-modeling`** — fast against the schema you have vs whether that schema represents the domain honestly.
 - **`interaction-and-error`** vs **`incident-review`** — both use the Swiss cheese model and both reject single-root-cause thinking. The first applies it *before* the failure, designing so the error is hard to make and easy to undo; the second applies it *afterward*, judging decisions without hindsight.
+- **`agent-design`** vs **`resilience`** — an agent calling tools *is* a distributed system, so timeouts, retries, and idempotency belong to `resilience` unchanged. `agent-design` covers what the agent should be and who can meaningfully supervise it.
 - **`interaction-and-error`** vs **`security`** — whether an action was *intended* vs whether it was *authorized*. Least privilege bounds the blast radius; this bounds the chance a legitimate user triggers it without meaning to.
 
 ## What isn't here

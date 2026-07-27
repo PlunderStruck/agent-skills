@@ -36,6 +36,9 @@ These are not fetched, not stored here by default, and never committed. If you o
 | `oosc.*` | Object-Oriented Software Construction — Meyer | `design-by-contract` |
 | `philosophy-of-software-design.*` | A Philosophy of Software Design — Ousterhout | `decomposition` |
 | `the_design_of_everyday_things.pdf` | The Design of Everyday Things, Revised & Expanded — Norman | `interaction-and-error` |
+| `aima-3rd-edition.pdf` | Artificial Intelligence: A Modern Approach, 3rd ed. — Russell & Norvig (only ch. 2 and selected sections extracted) | `agent-design` |
+| `bainbridge-ironies-of-automation.pdf` | Ironies of Automation — Bainbridge, *Automatica* 19(6), 1983 | `agent-design` |
+| `hancke-2020-ironies-revisited.pdf` | Ironies of Automation revisited — IFAC, 2020 (confirmation-only position essay; useful for four specifics, not as evidence the 1983 thesis held — see the extraction) | `agent-design` |
 | `normal-accidents.*` | Normal Accidents — Perrow | *(pending — every edition found is an image scan)* |
 
 ## Why the extractions matter more than these files

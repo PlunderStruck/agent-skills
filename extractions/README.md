@@ -39,6 +39,8 @@ The fix for "don't lose the detail" isn't bigger skills. It's this layer plus a 
 | [`data-modeling`](data-modeling.md) | Data and Reality — Kent | `data-modeling` |
 | [`debugging`](debugging.md) | Debugging: The 9 Indispensable Rules — Agans | `debugging` |
 | [`design-of-everyday-things`](design-of-everyday-things.md) | The Design of Everyday Things, Rev. & Exp. — Norman | `interaction-and-error` |
+| [`aima-intelligent-agents`](aima-intelligent-agents.md) | AI: A Modern Approach, 3rd ed., ch. 2 — Russell & Norvig | `agent-design` |
+| [`ironies-of-automation`](ironies-of-automation.md) | Ironies of Automation — Bainbridge (1983), plus the 2020 retrospective | `agent-design` |
 
 **Not present:** `distributed-data` and `api-evolution` were extracted from *Designing Data-Intensive Applications* by reading the text directly rather than via a sub-agent, so there's no separate intermediate file — those two skills are themselves the extraction, and are correspondingly more detailed than the others.
 
