@@ -8,8 +8,9 @@ The manifest below records what belongs here and where it came from, so the prov
 
 | File | Source | Licence | Feeds |
 |---|---|---|---|
-| `thinking-forth.pdf` | [thinking-forth.sourceforge.net](https://thinking-forth.sourceforge.net/) | CC BY-SA | *(pending)* |
-| `how-complex-systems-fail.html` | [how.complexsystems.fail](https://how.complexsystems.fail/) | Free to distribute | *(pending)* |
+| `thinking-forth.pdf` | [thinking-forth.sourceforge.net](https://thinking-forth.sourceforge.net/) | CC BY-SA | `decomposition` |
+| `how-complex-systems-fail.html` | [how.complexsystems.fail](https://how.complexsystems.fail/) | Free to distribute | `incident-review` |
+| — | [fsharpforfunandprofit.com](https://fsharpforfunandprofit.com/series/designing-with-types/) | Author's free series | `design-by-contract`, `data-modeling` |
 | — | [use-the-index-luke.com](https://use-the-index-luke.com/) | Author's free web edition | `sql-performance` |
 | — | [sre.google/books](https://sre.google/books/) | Google, free | `slo-and-alerting`, `resilience`, `security` |
 | — | [hpbn.co](https://hpbn.co/) | Author + O'Reilly, free | `network-performance` |
@@ -29,11 +30,13 @@ These are not fetched, not stored here by default, and never committed. If you o
 | `release-it.*` | Release It! — Nygard | `resilience` |
 | `unit-testing.*` | Unit Testing: Principles, Practices, and Patterns — Khorikov | `unit-testing` |
 | `wewlc.*` | Working Effectively with Legacy Code — Feathers | `legacy-code` |
-| `data-and-reality.*` | Data and Reality — Kent | *(pending)* |
-| `debugging-9-rules.*` | Debugging: The 9 Indispensable Rules — Agans | *(pending)* |
-| `transaction-processing.*` | Transaction Processing — Gray & Reuter | *(pending)* |
-| `normal-accidents.*` | Normal Accidents — Perrow | *(pending)* |
-| `oosc.*` | Object-Oriented Software Construction — Meyer | *(pending)* |
+| `data-and-reality.*` | Data and Reality — Kent | `data-modeling` |
+| `debugging-9-rules.*` | Debugging: The 9 Indispensable Rules — Agans | `debugging` |
+| `transaction-processing.*` | Principles of Transaction Processing — Bernstein & Newcomer | `distributed-data` |
+| `oosc.*` | Object-Oriented Software Construction — Meyer | `design-by-contract` |
+| `philosophy-of-software-design.*` | A Philosophy of Software Design — Ousterhout | `decomposition` |
+| `the_design_of_everyday_things.pdf` | The Design of Everyday Things, Revised & Expanded — Norman | `interaction-and-error` |
+| `normal-accidents.*` | Normal Accidents — Perrow | *(pending — every edition found is an image scan)* |
 
 ## Why the extractions matter more than these files
 

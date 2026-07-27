@@ -24,10 +24,11 @@ Each one is a catalogue of **failure modes bound to code shapes** — not a summ
 | [`data-modeling`](skills/data-modeling) | Schemas, keys, enums, versioning, integrating two systems | Natural keys that change, rows whose "one thing" is ambiguous, relationship metadata smeared onto an endpoint, categories with no slot for the record that arrived |
 | [`debugging`](skills/debugging) | Anything broken, especially if a first fix didn't hold | Theorising instead of observing, changing three things at once, declaring victory on one clean rerun |
 | [`incident-review`](skills/incident-review) | Postmortems, outage analysis, judging a decision after the fact | Single-root-cause writeups, hindsight bias, grading the outcome instead of the decision, remedies that add more coupling than they remove |
+| [`interaction-and-error`](skills/interaction-and-error) | Destructive actions, confirm and undo paths, modes and toggles, error messages, settings panels | Confirmation dialogs that catch slips but are inert against mistakes, invisible modes, destructive actions distinguished only by position, feedback too slow to stop a repeat press, control layouts that assert a false causal model |
 
 Each is a short router `SKILL.md` plus reference files loaded on demand, so the depth doesn't cost context until it's needed.
 
-**[`engineering-lenses`](skills/engineering-lenses)** indexes all sixteen — route by what you're writing, by what went wrong, or use it as an audit order. If you install one thing, install that.
+**[`engineering-lenses`](skills/engineering-lenses)** indexes all seventeen — route by what you're writing, by what went wrong, or use it as an audit order. If you install one thing, install that.
 
 ## Design principles
 
@@ -64,6 +65,7 @@ The material was distilled from these books. The text here is original — opera
 - **Debugging: The 9 Indispensable Rules** — David Agans → `debugging`
 - **Designing with Types** — Scott Wlaschin (free at [fsharpforfunandprofit.com](https://fsharpforfunandprofit.com/series/designing-with-types/)) → `design-by-contract`, `data-modeling`
 - **Principles of Transaction Processing** — Bernstein & Newcomer → `distributed-data`
+- **The Design of Everyday Things** — Don Norman (Revised & Expanded, 2013 — the earlier edition predates the signifier concept and Norman's correction of his own use of "affordance") → `interaction-and-error`
 
 If a skill here is useful to you, the book it came from will be more so. Buy them.
 
